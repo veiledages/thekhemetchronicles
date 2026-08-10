@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Khemet Chronicles</title>
+<meta property="og:title" content="The Khemet Chronicles">
+<meta property="og:description" content="Antik Mısır araştırmaları, kazı haberleri ve köşe yazıları.">
+<meta property="og:type" content="website">
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600;700&family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:100%;min-height:100%;}
+
+body{
+  min-height:100vh;
+  background:linear-gradient(165deg,#f4ead2,#ede0c0);
+  font-family:'Libre Baskerville',serif;
+  color:#1a0e02;
+  position:relative;overflow-x:hidden;
+}
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");
+  pointer-events:none;
+}
+body::after{
+  content:'';position:fixed;inset:0;z-index:0;
+  background:
+    radial-gradient(ellipse 60% 40% at 20% 20%, rgba(255,215,80,.13) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 60% at 80% 80%, rgba(255,200,60,.1) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 30% at 60% 10%, rgba(255,230,120,.08) 0%, transparent 50%);
+  animation: shimmer 8s ease-in-out infinite alternate;
+  pointer-events:none;
+}
+@keyframes shimmer{
+  0%{
+    background:
+      radial-gradient(ellipse 60% 40% at 20% 20%, rgba(255,215,80,.13) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 60% at 80% 80%, rgba(255,200,60,.1) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 30% at 60% 10%, rgba(255,230,120,.08) 0%, transparent 50%);
+  }
+  33%{
+    background:
+      radial-gradient(ellipse 55% 45% at 70% 30%, rgba(255,215,80,.12) 0%, transparent 60%),
+      radial-gradient(ellipse 45% 55% at 20% 70%, rgba(255,200,60,.09) 0%, transparent 55%),
+      radial-gradient(ellipse 40% 35% at 85% 60%, rgba(255,230,120,.07) 0%, transparent 50%);
+  }
+  66%{
+    background:
+      radial-gradient(ellipse 50% 50% at 50% 80%, rgba(255,215,80,.11) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 30% 20%, rgba(255,200,60,.1) 0%, transparent 55%),
+      radial-gradient(ellipse 35% 40% at 75% 40%, rgba(255,230,120,.08) 0%, transparent 50%);
+  }
+  100%{
+    background:
+      radial-gradient(ellipse 45% 55% at 80% 50%, rgba(255,215,80,.13) 0%, transparent 60%),
+      radial-gradient(ellipse 55% 35% at 10% 60%, rgba(255,200,60,.09) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 30% at 40% 90%, rgba(255,230,120,.07) 0%, transparent 50%);
+  }
+}
+
+/* ── HEADER ── */
+.header{
+  position:relative;z-index:10;
+  background:#1a0e02;
+  color:#e8d9b0;
+  text-align:center;
+  padding:26px 20px 18px;
+  border-bottom:3px double rgba(200,168,74,.4);
+}
+.header-ornament{
+  font-family:'Cinzel',serif;font-size:.5rem;
+  color:rgba(232,217,176,.35);letter-spacing:.42em;margin-bottom:10px;
+}
+.header-logo{
+  font-family:'Cinzel Decorative',serif;
+  font-size:clamp(1.6rem,5vw,2.8rem);
+  color:#c8a84a;line-height:1.1;margin-bottom:8px;
+  letter-spacing:.06em;
+}
+.header-rule{
+  display:flex;align-items:center;gap:10px;
+  max-width:460px;margin:0 auto 7px;
+}
+.header-rule-line{flex:1;height:1px;background:linear-gradient(to right,transparent,rgba(200,168,74,.35),transparent);}
+.header-rule-glyph{font-size:.7rem;color:rgba(200,168,74,.3);}
+.header-sub{
+  font-family:'Cinzel',serif;font-size:.46rem;
+  color:rgba(232,217,176,.45);letter-spacing:.32em;text-transform:uppercase;
+}
+
+/* ── NAV ── */
+.nav-date{
+  position:relative;z-index:10;
+  font-family:'Cinzel',serif;font-size:.4rem;
+  color:rgba(60,35,10,.28);letter-spacing:.18em;
+  text-align:center;padding:6px 0;
+  border-bottom:1px solid rgba(26,14,2,.08);
+  background:rgba(244,234,210,.4);
+}
+.nav{
+  position:relative;z-index:10;
+  border-bottom:1px solid rgba(26,14,2,.12);
+  background:rgba(244,234,210,.5);
+}
+.nav-inner{
+  display:flex;justify-content:center;
+  max-width:800px;margin:0 auto;
+  overflow-x:auto;scrollbar-width:none;
+}
+.nav-inner::-webkit-scrollbar{display:none;}
+.nav-item{
+  font-family:'Cinzel',serif;font-size:.45rem;
+  letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(60,35,10,.48);
+  padding:10px 22px;
+  border-right:1px solid rgba(26,14,2,.08);
+  cursor:pointer;white-space:nowrap;
+  transition:color .2s,background .2s;
+  text-decoration:none;display:block;
+}
+.nav-item:last-child{border-right:none;}
+.nav-item:hover{color:rgba(26,14,2,.82);background:rgba(26,14,2,.04);}
+.nav-item.active{color:#1a0e02;border-bottom:2px solid rgba(26,14,2,.55);margin-bottom:-1px;}
+
+/* ── MAIN LAYOUT ── */
+.page{
+  position:relative;z-index:10;
+  max-width:960px;margin:0 auto;
+  padding:28px 24px 60px;
+}
+
+/* MANŞET */
+.featured{
+  border-bottom:1px solid rgba(26,14,2,.12);
+  padding-bottom:22px;
+  margin-bottom:22px;
+  cursor:pointer;
+}
+.featured:hover .feat-hl{text-decoration:underline;text-decoration-color:rgba(26,14,2,.25);}
+.feat-eyebrow{
+  font-family:'Cinzel',serif;font-size:.46rem;
+  letter-spacing:.3em;text-transform:uppercase;
+  color:rgba(180,130,50,.85);margin-bottom:8px;
+  display:flex;align-items:center;gap:10px;
+}
+.feat-eyebrow::after{content:'';flex:1;height:1px;background:rgba(180,130,50,.22);}
+.feat-hl{
+  font-family:'Playfair Display',serif;font-weight:900;
+  font-size:clamp(1.2rem,3.8vw,1.75rem);
+  color:#1a0e02;line-height:1.18;margin-bottom:10px;
+}
+.feat-deck{
+  font-style:italic;font-size:.7rem;
+  color:#3a2810;line-height:1.68;margin-bottom:12px;
+  max-width:680px;
+}
+.feat-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.feat-tag{
+  font-family:'Cinzel',serif;font-size:.4rem;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(90,55,18,.58);
+  border:1px solid rgba(180,130,50,.25);padding:2px 8px;
+}
+.feat-cta{
+  font-family:'Cinzel',serif;font-size:.42rem;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(26,14,2,.48);text-decoration:none;
+  margin-left:auto;transition:color .2s;
+}
+.feat-cta:hover{color:#1a0e02;}
+
+/* İKİ SÜTUN */
+.two-col{
+  display:grid;
+  grid-template-columns:1fr 1px 240px;
+  gap:0;
+}
+.col-sep{background:rgba(26,14,2,.1);}
+.col-main{padding-right:24px;}
+.col-side{padding-left:22px;}
+
+/* HABER GRID */
+.col-label{
+  font-family:'Cinzel',serif;font-size:.44rem;
+  letter-spacing:.28em;text-transform:uppercase;
+  color:rgba(60,35,10,.35);
+  margin-bottom:14px;padding-bottom:7px;
+  border-bottom:1px solid rgba(26,14,2,.1);
+  display:flex;align-items:center;gap:8px;
+}
+.col-label::before{content:attr(data-glyph);opacity:.5;}
+
+.news-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0;
+}
+.news-item{
+  padding:14px 14px 14px 0;
+  border-bottom:1px solid rgba(26,14,2,.08);
+  cursor:pointer;text-decoration:none;display:block;
+  transition:background .2s;
+}
+.news-item:nth-child(odd){
+  padding-right:14px;
+  border-right:1px solid rgba(26,14,2,.08);
+}
+.news-item:nth-last-child(-n+2){border-bottom:none;}
+.news-item:hover .news-hl{text-decoration:underline;text-decoration-color:rgba(26,14,2,.2);}
+.news-item.dim{opacity:.32;pointer-events:none;}
+
+.news-cat{
+  font-family:'Cinzel',serif;font-size:.4rem;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(180,130,50,.75);margin-bottom:4px;
+}
+.news-hl{
+  font-family:'Playfair Display',serif;font-weight:700;
+  font-size:.72rem;color:#1a0e02;line-height:1.28;margin-bottom:4px;
+}
+.news-deck{
+  font-style:italic;font-size:.55rem;
+  color:#3a2810;line-height:1.52;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+}
+
+/* KÖŞE YAZILARI */
+.col-article{
+  padding:11px 0;
+  border-bottom:1px solid rgba(26,14,2,.08);
+  text-decoration:none;display:block;
+  transition:background .2s;
+}
+.col-article:last-child{border-bottom:none;}
+.col-article:hover .col-article-hl{text-decoration:underline;text-decoration-color:rgba(26,14,2,.2);}
+.col-article.dim{opacity:.3;pointer-events:none;}
+.col-article-num{
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:.85rem;color:rgba(180,140,70,.4);
+  line-height:1;margin-bottom:2px;
+}
+.col-article-hl{
+  font-family:'Playfair Display',serif;font-weight:700;
+  font-size:.65rem;color:#1a0e02;line-height:1.3;margin-bottom:3px;
+}
+.col-article-by{
+  font-family:'Cinzel',serif;font-size:.4rem;
+  letter-spacing:.1em;color:rgba(60,35,10,.38);
+}
+
+/* ── FOOTER ── */
+.site-footer{
+  position:relative;z-index:10;
+  border-top:2px double rgba(26,14,2,.12);
+  padding:16px 32px;
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:10px;
+  background:rgba(244,234,210,.5);
+}
+.footer-nav{
+  display:flex;align-items:center;gap:14px;
+  font-family:'Cinzel',serif;font-size:.42rem;
+  letter-spacing:.18em;text-transform:uppercase;
+  flex-wrap:wrap;
+}
+.footer-nav a{color:rgba(60,35,10,.38);text-decoration:none;transition:color .2s;}
+.footer-nav a:hover{color:rgba(60,35,10,.75);}
+.footer-nav a.active{color:rgba(60,35,10,.62);}
+.footer-dot{width:2px;height:2px;background:rgba(60,35,10,.2);border-radius:50%;}
+.footer-copy{
+  font-family:'Libre Baskerville',serif;font-style:italic;
+  font-size:.46rem;color:rgba(60,35,10,.28);
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:720px){
+  .two-col{grid-template-columns:1fr;}
+  .col-sep{display:none;}
+  .col-main{padding-right:0;}
+  .col-side{
+    padding-left:0;padding-top:22px;
+    border-top:1px solid rgba(26,14,2,.1);
+    margin-top:22px;
+  }
+  .news-grid{grid-template-columns:1fr;}
+  .news-item:nth-child(odd){padding-right:0;border-right:none;}
+  .news-item:nth-last-child(-n+2){border-bottom:1px solid rgba(26,14,2,.08);}
+  .news-item:last-child{border-bottom:none;}
+}
+@media(max-width:480px){
+  .header{padding:20px 16px 14px;}
+  .header-logo{font-size:1.9rem;}
+  .page{padding:20px 16px 40px;}
+  .nav-item{padding:8px 14px;font-size:.4rem;}
+  .site-footer{padding:14px 16px;}
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-ornament">𓂀 &nbsp;·&nbsp; 𓊹 &nbsp;·&nbsp; 𓏏</div>
+  <div class="header-logo">The Khemet Chronicles</div>
+  <div class="header-rule">
+    <div class="header-rule-line"></div>
+    <div class="header-rule-glyph">𓋹</div>
+    <div class="header-rule-line"></div>
+  </div>
+  <div class="header-sub">Records of a World That Never Truly Passed</div>
+</header>
+
+<div class="nav-date">Pazartesi, 9 Ağustos 2026</div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-item active" href="#">Haberler</a>
+    <a class="nav-item" href="#">Kazılar</a>
+    <a class="nav-item" href="#">Köşe Yazıları</a>
+    <a class="nav-item" href="#">Arşiv</a>
+  </div>
+</nav>
+
+<main class="page">
+
+  <!-- MANŞET -->
+  <article class="featured" onclick="goto('may26.html')">
+    <div class="feat-eyebrow">𓊹 &nbsp; Manşet</div>
+    <div class="feat-hl">Kleopatra ve Antonius'un Kayıp Buhurdanlığı Sırra Kadem Bastı</div>
+    <div class="feat-deck">İzinsiz dalışla çıkarıldığı iddia edilen paha biçilemez bronz eser, yetkililere teslim edilmeden karaborsada kayboldu. İskenderiye Arkeoloji Enstitüsü soruşturma başlattı.</div>
+    <div class="feat-meta">
+      <span class="feat-tag">kazı</span>
+      <span class="feat-tag">iskenderiye</span>
+      <span class="feat-tag">ptolemaios</span>
+      <a class="feat-cta" href="may26.html">Haberi Oku →</a>
+    </div>
+  </article>
+
+  <!-- İKİ SÜTUN -->
+  <div class="two-col">
+
+    <!-- SOL: HABERLER -->
+    <div class="col-main">
+      <div class="col-label" data-glyph="𓏏">Haberler</div>
+      <div class="news-grid">
+
+        <a class="news-item" href="nov00.html">
+          <div class="news-cat">Arkeoloji</div>
+          <div class="news-hl">Sular Altında 2000 Yıllık "Anne Mirası" Bulundu</div>
+          <div class="news-deck">Lapis lazuli Osiris figürü ve altın şahin heykeli ilk kez birlikte görüntülendi.</div>
+        </a>
+
+        <a class="news-item dim" href="#">
+          <div class="news-cat">Sergi</div>
+          <div class="news-hl">Yakında · · ·</div>
+          <div class="news-deck">Arşiv büyümeye devam ediyor.</div>
+        </a>
+
+        <a class="news-item dim" href="#">
+          <div class="news-cat">Yakında</div>
+          <div class="news-hl">· · ·</div>
+          <div class="news-deck">Arşiv büyümeye devam ediyor.</div>
+        </a>
+
+        <a class="news-item dim" href="#">
+          <div class="news-cat">Yakında</div>
+          <div class="news-hl">· · ·</div>
+          <div class="news-deck">Arşiv büyümeye devam ediyor.</div>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="col-sep"></div>
+
+    <!-- SAĞ: KÖŞE YAZILARI -->
+    <div class="col-side">
+      <div class="col-label" data-glyph="𓋹">Köşe Yazıları</div>
+
+      <a class="col-article dim" href="#">
+        <div class="col-article-num">I</div>
+        <div class="col-article-hl">Neden Her Nesil Kleopatra'yı Yeniden Keşfeder?</div>
+        <div class="col-article-by">Dr. Y. Al-Rashid &nbsp;·&nbsp; Mısırbilim</div>
+      </a>
+
+      <a class="col-article dim" href="#">
+        <div class="col-article-num">II</div>
+        <div class="col-article-hl">Kaybolan Eserler: Arkeoloji mi, Yağma mı?</div>
+        <div class="col-article-by">Prof. L. Mansour &nbsp;·&nbsp; Arkeoloji Etiği</div>
+      </a>
+
+      <a class="col-article dim" href="#">
+        <div class="col-article-num">III</div>
+        <div class="col-article-hl">Yakında · · ·</div>
+        <div class="col-article-by">—</div>
+      </a>
+
+    </div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-nav">
+    <a href="#" class="active">𓂀 Khemet</a>
+    <div class="footer-dot"></div>
+    <a href="../vestigia/" style="opacity:.32;pointer-events:none;">📜 Vestigia</a>
+    <div class="footer-dot"></div>
+    <a href="#" style="opacity:.32;pointer-events:none;">𓊹 Tapınak</a>
+  </div>
+  <div class="footer-copy">The Khemet Chronicles &nbsp;·&nbsp; Antik Mısır Araştırmaları</div>
+</footer>
+
+<script>
+function goto(url){
+  document.body.style.transition='opacity .35s ease';
+  document.body.style.opacity='0';
+  setTimeout(()=>{ window.location.href=url; },320);
+}
+document.querySelectorAll('.nav-item').forEach(item=>{
+  item.addEventListener('click',function(e){
+    e.preventDefault();
+    document.querySelectorAll('.nav-item').forEach(i=>i.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+</script>
+
+<canvas id="glitter" style="position:fixed;inset:0;z-index:1;pointer-events:none;"></canvas>
+<script>
+const canvas = document.getElementById('glitter');
+const ctx = canvas.getContext('2d');
+let W, H, particles = [];
+function resize(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+resize(); window.addEventListener('resize', resize);
+const COLORS = ['rgba(255,215,60,','rgba(255,200,80,','rgba(240,180,40,','rgba(255,235,120,','rgba(200,160,30,'];
+function createParticle(){
+  return { x:Math.random()*W, y:Math.random()*H, size:Math.random()*1.8+0.4, alpha:0,
+    maxAlpha:Math.random()*0.55+0.2, speed:Math.random()*0.3+0.05,
+    dx:(Math.random()-0.5)*0.3, phase:Math.random()*Math.PI*2,
+    color:COLORS[Math.floor(Math.random()*COLORS.length)],
+    life:0, maxLife:Math.random()*180+80 };
+}
+for(let i=0;i<90;i++){
+  const p=createParticle(); p.life=Math.random()*p.maxLife;
+  p.alpha=p.maxAlpha*Math.sin((p.life/p.maxLife)*Math.PI); particles.push(p);
+}
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  particles.forEach((p,i)=>{
+    p.life++; p.y-=p.speed; p.x+=p.dx+Math.sin(p.phase+p.life*0.02)*0.2;
+    p.alpha=p.maxAlpha*Math.sin((p.life/p.maxLife)*Math.PI);
+    if(p.life>=p.maxLife){ particles[i]=createParticle(); return; }
+    ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.life*0.03);
+    ctx.globalAlpha=p.alpha;
+    ctx.fillStyle=p.color+p.alpha+')';
+    ctx.beginPath(); ctx.moveTo(0,-p.size); ctx.lineTo(p.size*0.5,0);
+    ctx.lineTo(0,p.size); ctx.lineTo(-p.size*0.5,0); ctx.closePath(); ctx.fill();
+    ctx.globalAlpha=p.alpha*0.4;
+    ctx.fillStyle='rgba(255,250,200,'+p.alpha*0.4+')';
+    ctx.beginPath(); ctx.arc(0,0,p.size*0.4,0,Math.PI*2); ctx.fill();
+    ctx.restore();
+  });
+  requestAnimationFrame(draw);
+}
+draw();
+</script>
+</body>
+</html>
